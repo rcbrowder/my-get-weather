@@ -1,0 +1,16 @@
+.container {
+	max-width: 500px;
+	min-width: 350px;
+}
+
+#input-form {
+	text-align: center;
+}
+
+#error {
+	display: none;
+}
+
+#output {
+	display: none;
+}
