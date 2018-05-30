@@ -9,7 +9,9 @@ var errorMessage = document.getElementById('errorMessage');
 // Output
 var output = document.getElementById('output');
 var city = document.getElementById('city');
-var temp = document.getElementById('temp');
+var tempCurrent = document.getElementById('tempCurrent');
+var tempHigh = document.getElementById('tempHigh');
+var tempLow = document.getElementById('tempLow');
 var cond = document.getElementById('cond');
 var imag = document.getElementById('imag');
 
@@ -21,7 +23,7 @@ var appId = "7dc8be0140f5ffb29046006b555a09c8";
 // Wait for data to load before executing any javascript
 document.onreadystatechange = function() {
 	if (document.readyState == "interactive") {
-		weatherButton.onclick = getWeather;
+		getWeatherButton.onclick = getWeather;
 	}
 };
 
@@ -31,7 +33,7 @@ function getWeather() {
 
 	// Insert user data and appId into URL
 	var url = "http://api.openweathermap.org/data/2.5/weather?zip=<zipCode>&us&appid=<appId>";
-	url = url.replace("<zipCode>", zipInput.value);
+	url = url.replace("<zipCode>", zip.value);
 	url = url.replace("<appId>", appId);
 
 	// Code that fetches data from the API URL and stores it in results.
@@ -52,21 +54,25 @@ function httpRequestOnError() {
 // Function to disply data if getWeather is successful
 function catchResponse() {
     if (apiRequest.statusText == 'OK') {
-        var response = JSON.parse(apiRequest.statusText);
+        var response = JSON.parse(apiRequest.responseText);
 
         error.style.display = 'none';
         city.innerHTML = response.name;
+        tempCurrent.innerHTML = convertKtoF(response.main.temp) + '&deg; F';
+		tempLow.innerHTML = convertKtoF(response.main.temp_min) + '&deg; F';
+		tempHigh.innerHTML = convertKtoF(response.main.temp_max) + '&deg; F';
         cond.innerHTML = response.weather[0].description;
         output.style.display = 'block';
     }
 }
 
+// Convert Kelvin to Fahrenheit
 function convertKtoF(kel) {
-	var fahr = kel * (9/5) - 459.67;
+	var far = kel * (9/5) - 459.67;
 	return Math.round(far);
 }
 
-
+// Display corresponding image to current tempurature
 function displayImage(tempF) {
 
 	if (tempF > 85) {
@@ -81,3 +87,4 @@ function displayImage(tempF) {
 	else {
 		imag.src = '#';
 	}
+}
