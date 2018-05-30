@@ -52,6 +52,32 @@ function httpRequestOnError() {
 // Function to disply data if getWeather is successful
 function catchResponse() {
     if (apiRequest.statusText == 'OK') {
-        
+        var response = JSON.parse(apiRequest.statusText);
+
+        error.style.display = 'none';
+        city.innerHTML = response.name;
+        cond.innerHTML = response.weather[0].description;
+        output.style.display = 'block';
     }
 }
+
+function convertKtoF(kel) {
+	var fahr = kel * (9/5) - 459.67;
+	return Math.round(far);
+}
+
+
+function displayImage(tempF) {
+
+	if (tempF > 85) {
+		imag.src = '#';
+	}
+	else if (tempF > 65) {
+		imag.src = '#';
+	}
+	else if (tempF > 32) {
+		imag.src = '#';
+	}
+	else {
+		imag.src = '#';
+	}
