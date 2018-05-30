@@ -7,10 +7,14 @@
 	text-align: center;
 }
 
-#error {
+body {
+    background-image: url('https://hdwallsource.com/img/2018/5/spongebob-bikini-bottom-wallpaper-63311-65364-hd-wallpapers.jpg');
+}
+
+/* #error {
 	display: none;
 }
 
 #output {
 	display: none;
-}
+} */
