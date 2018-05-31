@@ -58,10 +58,11 @@ function catchResponse() {
 
         error.style.display = 'none';
         city.innerHTML = response.name;
-        tempCurrent.innerHTML = convertKtoF(response.main.temp) + '&deg; F';
-		tempLow.innerHTML = convertKtoF(response.main.temp_min) + '&deg; F';
-		tempHigh.innerHTML = convertKtoF(response.main.temp_max) + '&deg; F';
-        cond.innerHTML = response.weather[0].description;
+        tempCurrent.innerHTML = 'Current tempurature: ' + convertKtoF(response.main.temp) + '&deg; F';
+		tempLow.innerHTML = 'High: ' + convertKtoF(response.main.temp_min) + '&deg; F';
+		tempHigh.innerHTML = 'Low: ' + convertKtoF(response.main.temp_max) + '&deg; F';
+        cond.innerHTML = (response.weather[0].description).toUpperCase();
+        displayImage(convertKtoF(response.main.temp));
         output.style.display = 'block';
     }
 }
@@ -76,15 +77,15 @@ function convertKtoF(kel) {
 function displayImage(tempF) {
 
 	if (tempF > 85) {
-		imag.src = '#';
+		imag.src = 'https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif';
 	}
 	else if (tempF > 65) {
-		imag.src = '#';
+		imag.src = 'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif';
 	}
 	else if (tempF > 32) {
-		imag.src = '#';
+		imag.src = 'https://media.giphy.com/media/tvU9iTev6uBIQ/giphy.gif';
 	}
 	else {
-		imag.src = '#';
+		imag.src = 'https://media.giphy.com/media/xTeV7qibUsOYA3mmYw/giphy.gif';
 	}
 }
