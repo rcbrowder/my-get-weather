@@ -58,7 +58,7 @@ function catchResponse() {
 
         error.style.display = 'none';
         city.innerHTML = response.name;
-        tempCurrent.innerHTML = 'Current tempurature: ' + convertKtoF(response.main.temp) + '&deg; F';
+        tempCurrent.innerHTML = 'Current: ' + convertKtoF(response.main.temp) + '&deg; F';
 		tempLow.innerHTML = 'High: ' + convertKtoF(response.main.temp_min) + '&deg; F';
 		tempHigh.innerHTML = 'Low: ' + convertKtoF(response.main.temp_max) + '&deg; F';
         cond.innerHTML = (response.weather[0].description).toUpperCase();
