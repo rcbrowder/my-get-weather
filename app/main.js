@@ -46,6 +46,7 @@ function getWeather() {
 
 // Function to display error message
 function httpRequestOnError() {
+    console.log('error');
     output.style.display = 'none';
     errorMessage.innerHTML = 'tHeRe WaS a PrObLeM ReAcHiNg ThE sErVeR. tRy AgAiN lAtEr.';
     error.style.display = 'block';
@@ -65,6 +66,10 @@ function catchResponse() {
         displayImage(convertKtoF(response.main.temp));
         output.style.display = 'block';
     }
+    else {
+		error.style.display = 'block';
+		errorMessage.innerHTML = apiRequest.statusText + '<img src="http://i0.kym-cdn.com/entries/icons/mobile/000/022/940/mockingspongebobbb.jpg" width="400px">';
+	}
 }
 
 // Convert Kelvin to Fahrenheit
